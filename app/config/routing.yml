@@ -1,0 +1,8 @@
+app:
+    resource: @FrontBundle/Controller/
+    type:     annotation
+back:
+    resource: @BackendBundle/Controller/
+    type:     annotation
+    prefix:   /admin
+

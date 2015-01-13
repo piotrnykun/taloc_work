@@ -1,0 +1,143 @@
+
+
+/* LEFT MENU :*/
+*, html {
+    outline: 0 !important;
+    -webkit-user-select: none !important;  /* Chrome all / Safari all */
+    -webkit-touch-callout: none !important;
+    -moz-user-select: text !important;
+    -ms-user-select: none !important;      /* IE 10+ */
+
+    /* No support for these yet, use at own risk */
+    -o-user-select: none !important;
+    user-select: none !important;        
+}
+
+.adminContainer {
+    padding:0;
+}
+@media (min-width: 768px) {
+  .adminContainer {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .adminContainer {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .adminContainer {
+    width: 100%;
+  }
+}
+
+html,body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.leftContainer {
+    width:200px;
+    float:left;
+    display:none;
+}
+
+.leftContainer .leftMenu {
+    background:#4b565c;
+    border:none;
+    border-radius:0;
+}
+
+.leftContainer .leftMenu .navbar-collapse {
+    padding-left:20px;
+}
+.leftContainer .leftMenu .navbar-nav {
+    margin:0;
+    padding:0;
+}
+.leftContainer .leftMenu .navbar-nav li {
+    padding-left:0;
+    text-align:left;
+    padding-bottom:20px;
+}
+.leftContainer .leftMenu .navbar-nav img {
+    width:22px;
+    height:22px;
+    float:left;
+    display:block;
+    margin-right:23px;
+}
+
+.leftContainer .leftMenu .navbar-nav span {
+    color: #ffffff;
+    display: block;
+    float: left;
+    font-size: 15px;
+    line-height: 19px;
+    width: 88px;
+}
+
+.topContainer {
+    width:100%;
+    float:left;
+    height:50px;
+}
+
+.topContainer .leftTaloc {
+    background: none repeat scroll 0 0 #2e3639;
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    width: 150px;
+    cursor:pointer;
+}
+
+.topContainer .leftMenuButton {
+    background:#4a555b;
+    height:50px;
+    width:50px;
+    line-height: 50px;
+    text-align: center;
+    float:left;
+    cursor:pointer;
+}
+
+.centerTopText {
+    height:50px;
+    line-height:50px;
+    background:#FFFFFF;
+    float:left;
+}
+
+.centerTopText h1 {
+    font-size:14px;
+    color:#4a555b;
+    padding:0 25px;
+}
+
+.topRight {
+    float:right;
+    height:50px;
+    line-height:50px;
+    width:100px;
+    background:#FFFFFF;
+}
+
+.topRight .userSettings {
+    float:left;
+    cursor:pointer;
+    width:50px;
+    text-align:center;
+    border-left:1px solid #e4eaec;
+}
+
+.topRight .turnOff {
+    float:right;
+    cursor:pointer;
+    width:50px;
+    border-left:1px solid #e4eaec;
+    margin:0 auto;
+    text-align:center;
+}
+

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        
+        {# JQUERY: #}
+        <script type="text/javascript" src="{{ asset('lib/jquery/jquery-1.11.2.min.js') }}"></script>
+        
+        {# BOOTSTRAP: #}
+        <link rel="stylesheet" type="text/css" href="{{ asset('lib/bootstrap/css/bootstrap.min.css') }}">
+        <script type="text/javascript" src="{{ asset('lib/bootstrap/js/bootstrap.min.js') }}"></script>
+        
+        {# Service: #}
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/backend/admin.css') }}">
+        <script type="text/javascript" src="{{ asset('js/backend/main.js') }}"></script>
+        
+        {# fonts: #}
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+
+        <div class="container adminContainer">
+            
+                <div class="topContainer">
+                    <a href="{{ path('admin_homepage') }}">
+                        <div class="leftTaloc">
+                            <img src="{{ asset('img/backend/taloc.png') }}">
+                        </div>
+                    </a>
+
+                    <div class="leftMenuButton">
+                        <img src="{{ asset('img/backend/mobile_menu.png') }}">
+                    </div>
+
+                    <div class="centerTopText">
+                        <h1>Backoffice - Panel administracyjny sklepu Taloc</h1>
+                    </div>
+                    
+                    <div class="topRight">
+                        
+                        <div class="userSettings">
+                            <img data-inactive="{{ asset('img/backend/config_gray.png') }}" data-active="{{ asset('img/backend/config.png') }}" src="{{ asset('img/backend/config_gray.png') }}">
+                        </div>
+                        
+                        <div class="turnOff">
+                            <img data-inactive="{{ asset('img/backend/turn_off.png') }}" data-active="{{ asset('img/backend/turn_off_red.png') }}" src="{{ asset('img/backend/turn_off.png') }}">
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="leftContainer">
+                    <nav class="navbar navbar-default leftMenu">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#"><img data-inactive="{{ asset('img/backend/dashboard_white.png') }}" data-active="{{ asset('img/backend/dashboard.png') }}" src="{{ asset('img/backend/dashboard_white.png') }}" ><span>Dashboard</span></a></li>
+                                <li><a href="#"><img data-inactive="{{ asset('img/backend/product_list_white.png') }}" data-active="{{ asset('img/backend/product_list_blue.png') }}" src="{{ asset('img/backend/product_list_white.png') }}" ><span>Lista produktów</span></a></li>
+                                <li><a href="#"><img data-inactive="{{ asset('img/backend/reclamation_white.png') }}" data-active="{{ asset('img/backend/reclamation_blue.png') }}" src="{{ asset('img/backend/reclamation_white.png') }}" ><span>Lista reklamacji</span></a></li>
+                                <li><a href="#"><img data-inactive="{{ asset('img/backend/clients_list_white.png') }}" data-active="{{ asset('img/backend/clients_list_blue.png') }}" src="{{ asset('img/backend/clients_list_white.png') }}" ><span>Lista klientów</span></a></li>
+                                <li><a href="#"><img data-inactive="{{ asset('img/backend/order_white.png') }}" data-active="{{ asset('img/backend/order_blue.png') }}" src="{{ asset('img/backend/order_white.png') }}" ><span>Lista zamówień</span></a></li>
+                                <li><a href="#"><img data-inactive="{{ asset('img/backend/time_white.png') }}" data-active="{{ asset('img/backend/time_blue.png') }}" src="{{ asset('img/backend/time_white.png') }}" ><span>Lista ofert ograniczonych czasowo</span></a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+
+                <div class="centerContainer">
+                    {% block center %}{% endblock %}
+                </div>
+
+                <div class="rightContainer">
+                    {% block right %}{% endblock %}
+                </div>
+
+                {% block javascripts %}{% endblock %}
+                
+        </div>
+    </body>
+</html>
