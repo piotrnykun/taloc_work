@@ -54,7 +54,7 @@ class LoginController extends Controller
         if ($form->isValid()) {
             
             
-            
+            echo 'ok'; exit();
             
             
             

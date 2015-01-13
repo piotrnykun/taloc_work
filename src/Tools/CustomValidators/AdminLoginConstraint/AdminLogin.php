@@ -10,4 +10,9 @@ use Symfony\Component\Validator\Constraint;
 class AdminLogin extends Constraint
 {
     public $message = ' Niepoprany użytkownik / hasło ';
+    
+    public function validatedBy()
+    {
+        return 'admin_login_check';
+    }
 }

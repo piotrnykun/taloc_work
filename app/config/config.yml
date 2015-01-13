@@ -78,3 +78,10 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+    
+services:
+    validator.node.admin_login_check:
+        class:        Tools\CustomValidators\AdminLoginConstraint\AdminLoginValidator
+        arguments: [@database_connection]
+        tags:
+            - { name: validator.constraint_validator, alias: admin_login_check }
