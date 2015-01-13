@@ -62,7 +62,14 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
+        auto_mapping: false
+        mappings:
+            Acme:
+                type: annotation
+                is_bundle: false
+                dir: %kernel.root_dir%/../src/EntityBundle
+                prefix: EntityBundle
+                alias: EntityBundle
 
 # Swiftmailer Configuration
 swiftmailer:

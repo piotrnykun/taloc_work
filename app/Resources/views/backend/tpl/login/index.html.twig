@@ -1,14 +1,33 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        ADMIN PANEL
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
-</html>
+{% extends 'backend/layout/base_login.html.twig' %}
+
+{% block center %}
+    
+    <div class="loginOuterContainer">
+        <div class="loginInnerContainer">
+            <div class="loginContainer">
+
+                <img class="talocLogin" src="{{ asset('img/backend/taloc.png') }}">
+                <span class="talocLoginDesc">Taloc backoffice</span>
+                
+                {{ form_start(form, { 'attr': {'class': 'login_form'} }) }}
+                    
+                {{ form_widget(form.admin_login, { 'attr': {'class': 'form-control input-form'} }) }}
+                 <div class="form_errors">
+                        {{ form_errors(form.admin_login) }} 
+                </div>
+                {{ form_widget(form.admin_password, { 'attr': {'class': 'form-control input-form'} }) }}
+                
+                <div class="form_errors">
+                        {{ form_errors(form.admin_password) }} 
+                </div>
+                    
+                {{ form_widget(form.admin_save_me, { 'attr': {'class': 'form-control'} }) }}
+                {{ form_label(form.admin_save_me, 'Zapamiętaj mnie', { 'label_attr': {'class': 'save_me'} }) }}
+                {{ form_widget(form.log_me, { 'attr': {'class': 'btn btn-login'} }) }}
+                
+                {{ form_end(form) }}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
