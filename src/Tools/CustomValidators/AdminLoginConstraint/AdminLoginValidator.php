@@ -23,16 +23,24 @@ class AdminLoginValidator extends ConstraintValidator
          $this->connection = $dbalConnection;
     }
     
-    public function validate($value, Constraint $constraint)
+    public function validate($array, Constraint $constraint)
     {
+            try {
+                $sql = 'SELECT * FROM tc_admin WHERE admin_login = :login AND admin_password = :password';
+                $result = $this->connection->fetchAssoc($sql,array('login' => $login,'password' => $pass));
+                
+                if ( !$result ) {
+                    throw new Exception('Podano niepoprawny login/hasło');
+                } else {
+                    return true;
+                }
+                
+            } catch (Exception $ex) {
+                $this->context->buildViolation($constraint->message)
+                    ->setParameter('%string%', $ex->getMessage())
+                    ->addViolation();
+            }
             
-            $sql = 'SELECT * FROM tc_admin WHERE admin_login = :login';
-            $result = $this->connection->fetchAssoc($sql,array('login' => $value));
-            var_dump($result);exit();
-        
-            $this->context->buildViolation($constraint->message)
-                ->setParameter('%string%', $value)
-                ->addViolation();
 
     }
     
