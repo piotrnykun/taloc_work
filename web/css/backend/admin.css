@@ -230,6 +230,11 @@ html,body {
     padding:10px 0 0 10px;
 }
 
+.checkbox_login {
+    float: left;
+    width: 20px;
+}
+
 .form_errors {
     font-size:10px;
     color:red;
@@ -242,3 +247,4 @@ html,body {
 .form_errors ul {
     list-style: none;
 }
+

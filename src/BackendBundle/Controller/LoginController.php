@@ -5,7 +5,7 @@ namespace BackendBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use EntityBundle\AdminUser;
+use EntityBundle\User;
 
 class LoginController extends Controller
 {
@@ -15,9 +15,9 @@ class LoginController extends Controller
     public function indexAction(Request $request)
     {
         
-        $object = new AdminUser();
+        $object = new User();
         $form = $this->createFormBuilder($object)
-                ->add('admin_login', 'text',array(
+                ->add('user_username', 'text',array(
                     'label' => ' ',
                     'required' => true,
                     'attr'   =>  array(
@@ -26,7 +26,7 @@ class LoginController extends Controller
                     )
                    
                 ))
-                ->add('admin_password', 'password',array(
+                ->add('user_password', 'password',array(
                     'label' => ' ',
                     'required' => true,
                     'attr'   =>  array(
@@ -34,7 +34,7 @@ class LoginController extends Controller
                         'placeholder' => 'Hasło'
                     )
                 ))
-                ->add('admin_save_me', 'checkbox', array(
+                ->add('user_save_me', 'checkbox', array(
                     'label' => 'Zapamiętaj mnie',
                     'mapped' => false,
                     'required' => false,
@@ -51,6 +51,7 @@ class LoginController extends Controller
                 ->getForm();
         
         $form->handleRequest($request);
+    
         if ($form->isValid()) {
             
             
