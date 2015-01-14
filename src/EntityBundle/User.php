@@ -51,6 +51,7 @@ class User implements UserInterface, \Serializable {
      * @ORM\Column(type="datetime")
      */
     protected $user_date_add;
+    
 
     public $user_save_me = false;
     
@@ -74,7 +75,7 @@ class User implements UserInterface, \Serializable {
      * @param string $userLogin
      * @return User
      */
-    public function setUsername($userLogin)
+    public function setUserUsername($userLogin)
     {
         $this->user_username = $userLogin;
 
@@ -102,7 +103,7 @@ class User implements UserInterface, \Serializable {
      * @param string $userPassword
      * @return User
      */
-    public function setPassword($userPassword)
+    public function setUserPassword($userPassword)
     {
         $this->user_password = $userPassword;
 
@@ -186,7 +187,7 @@ class User implements UserInterface, \Serializable {
     }
 
     public function getSalt() {
-        
+        return null;
     }
     /**
      * @see \Serializable::serialize()
