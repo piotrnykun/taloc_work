@@ -1,8 +1,17 @@
-app:
-    resource: @FrontBundle/Controller/
-    type:     annotation
-back:
-    resource: @BackendBundle/Controller/
-    type:     annotation
-    prefix:   /admin
+taloc_app:
+    resource: "@TalocAppBundle/Controller/"
+    type: annotation
 
+taloc_user:
+    resource: "@TalocUserBundle/Controller/"
+    type: annotation
+    
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    prefix:   /admin
+    
+admin_logout:
+       path: /admin/logout
+       
+user_logout:
+       path: /logout       

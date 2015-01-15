@@ -6,6 +6,7 @@ imports:
 framework:
     #esi:             ~
     #translator:      { fallback: "%locale%" }
+    translator: ~
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -62,14 +63,8 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: false
-        mappings:
-            Acme:
-                type: annotation
-                is_bundle: false
-                dir: %kernel.root_dir%/../src/EntityBundle
-                prefix: EntityBundle
-                alias: EntityBundle
+        auto_mapping: true
+        
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -79,9 +74,14 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
     
-services:
-    validator.node.admin_login_check:
-        class:        Tools\CustomValidators\AdminLoginConstraint\AdminLoginValidator
-        arguments: [@database_connection]
-        tags:
-            - { name: validator.constraint_validator, alias: admin_login_check }
+fos_user:
+    db_driver: orm
+    firewall_name: admin
+    user_class: Taloc\UserBundle\Entity\User
+    
+#services:
+   # validator.node.admin_login_check:
+      #  class:        Tools\CustomValidators\AdminLoginConstraint\AdminLoginValidator
+       # arguments: [@database_connection]
+       # tags:
+         #   - { name: validator.constraint_validator, alias: admin_login_check }

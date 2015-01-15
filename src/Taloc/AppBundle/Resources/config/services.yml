@@ -1,0 +1,4 @@
+services:
+#    taloc_app.example:
+#        class: Taloc\AppBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

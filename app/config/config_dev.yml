@@ -47,9 +47,9 @@ assetic:
 #swiftmailer:
 #    delivery_address: me@example.com
 
-services:
-    validator.node.admin_login_check:
-        class:        Tools\CustomValidators\AdminLoginConstraint\AdminLoginValidator
-        arguments: [@database_connection]
-        tags:
-            - { name: validator.constraint_validator, alias: admin_login_check }
+#services:
+   # validator.node.admin_login_check:
+     #   class:        Tools\CustomValidators\AdminLoginConstraint\AdminLoginValidator
+      #  arguments: [@database_connection]
+       # tags:
+        #    - { name: validator.constraint_validator, alias: admin_login_check }

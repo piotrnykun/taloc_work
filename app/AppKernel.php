@@ -16,10 +16,12 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new FrontBundle\FrontBundle(),
-            new BackendBundle\BackendBundle()
+            /* external registration bundle: */
+            new Taloc\UserBundle\TalocUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Taloc\AppBundle\TalocAppBundle(),
         );
-
+                                
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
