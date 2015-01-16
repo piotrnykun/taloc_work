@@ -15,5 +15,10 @@ class DefaultController extends Controller
     public function indexAction()
     {
         return $this->render('TalocAppBundle:Default:index.html.twig');
+        
+        /* działający serwis: */
+        #$msgService = $this->get('test_service');
+        #$msgService->sendMsg('testowa wiadomosc serwisu');
+        
     }
 }

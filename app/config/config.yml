@@ -79,7 +79,10 @@ fos_user:
     firewall_name: admin
     user_class: Taloc\UserBundle\Entity\User
     
-#services:
+services:
+    test_service:
+        class:        Taloc\AppBundle\Services\Test
+    
    # validator.node.admin_login_check:
       #  class:        Tools\CustomValidators\AdminLoginConstraint\AdminLoginValidator
        # arguments: [@database_connection]

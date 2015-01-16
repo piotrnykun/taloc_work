@@ -1,15 +1,18 @@
 security:
     encoders:
-        Taloc\UserBundle\Entity\User:
-            algorithm: bcrypt
+        #Symfony\Component\Security\Core\User\User: plaintext
+        #EntityBundle\User:
+            # algorithm:            plaintext
+             #ignore_case:          false
+        FOS\UserBundle\Model\UserInterface: sha512     
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
 
     providers: 
-        front_provider:
-            entity: { class: \Taloc\UserBundle\Entity\User }
+        fos_userbundle:
+            id: fos_user.user_provider.username    
 
     firewalls:
         dev:
@@ -20,7 +23,8 @@ security:
             pattern:  ^/(?!admin)
             anonymous: ~
             form_login:
-                provider: user_front_provider
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
                 login_path: /login
                 check_path: /login_check
             context: main
@@ -54,5 +58,5 @@ security:
         - { path: ^/admin/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/(?!admin), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(?!admin), roles: ROLE_USER }
 

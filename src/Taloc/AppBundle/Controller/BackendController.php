@@ -11,7 +11,7 @@ class BackendController extends Controller
      * 
      * @ROUTE("/admin/", name="admin_homepage" )
      */
-    public function indexAction($param)
+    public function indexAction()
     {
         return $this->render('TalocAppBundle:backend:base.html.twig');
     }

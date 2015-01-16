@@ -19,7 +19,7 @@ class AppKernel extends Kernel
             /* external registration bundle: */
             new Taloc\UserBundle\TalocUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new Taloc\AppBundle\TalocAppBundle(),
+            new Taloc\AppBundle\TalocAppBundle()
         );
                                 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

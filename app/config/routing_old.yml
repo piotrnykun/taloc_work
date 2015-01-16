@@ -15,6 +15,3 @@ admin_logout:
        
 user_logout:
        path: /logout       
-
-
-
