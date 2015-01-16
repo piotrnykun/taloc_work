@@ -1,11 +1,12 @@
 security:
     encoders:
-        Taloc\UserBundle\Entity\User:
-            algorithm: bcrypt
+        Taloc\UserBundle\Entity\User: plaintext
+            #algorithm: bcrypt
+            #cost: 12
 
-    role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
+#    role_hierarchy:
+#        ROLE_ADMIN:       ROLE_USER
+#        ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
 
     providers: 
         front_provider:
@@ -20,9 +21,12 @@ security:
             pattern:  ^/(?!admin)
             anonymous: ~
             form_login:
-                provider: user_front_provider
+                provider: front_provider
                 login_path: /login
                 check_path: /login_check
+                username_parameter: form[user_email]
+                password_parameter: form[user_password]
+                default_target_path:  /
             context: main
             logout:
                 path:   /logout
@@ -31,28 +35,19 @@ security:
         admin:
             pattern:  ^/admin
             anonymous: ~
-            form_login:
-                provider: fos_userbundle
-                csrf_provider: form.csrf_provider
-                check_path: /admin/login_check
-                login_path: /admin/login
-                default_target_path: /admin/
-            logout: 
-                path:   /admin/logout
-                target: /admin/login
             context: admin
         default:
             anonymous: ~    
-        
             
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/check_login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(?!admin), roles: ROLE_USER }
         
         - { path: ^/admin/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/(?!admin), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        
 

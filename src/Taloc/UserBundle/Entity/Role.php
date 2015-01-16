@@ -1,6 +1,6 @@
 <?php
 
-namespace Taloc\AppBundle\Entity;
+namespace Taloc\UserBundle\Entity;
 
 use Symfony\Component\Security\Core\Role\RoleInterface;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -14,7 +14,7 @@ class Role implements RoleInterface
 {
     /**
      * @ORM\Column(name="role_id", type="integer")
-     * @ORM\Id()
+     * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $role_id;
@@ -30,7 +30,9 @@ class Role implements RoleInterface
     private $role_value;
 
     /**
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="user_roles")
+     * 
+     * @ORM\ManyToMany(targetEntity="\Taloc\UserBundle\Entity\User", mappedBy="user_roles")
+     * 
      */
     private $role_users;
 

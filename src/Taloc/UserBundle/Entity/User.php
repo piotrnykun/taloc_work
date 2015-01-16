@@ -11,43 +11,47 @@ use FOS\UserBundle\Model\User as BaseUser;
 /**
  * @ORM\Entity
  * @ORM\Table(name="tc_user")
- * 
+ * @ORM\Entity(repositoryClass="Taloc\UserBundle\Entity\UserRepository")
  * 
  */
 class User implements AdvancedUserInterface, \Serializable {
     
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="user_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $user_id;
     
     /**
-     * @ORM\Column(type="email",length=100, unique=true)
+     * @ORM\Column(name="user_email", type="string",length=100, unique=true)
      * 
      */
     protected $user_email;
     
     /**
-     * @ORM\Column(type="string",length=200, unique=true)
+     * @ORM\Column(name="user_facebook_code", type="string",length=200, unique=true)
      * 
      */
     protected $user_facebook_code;
     
     /**
-     * @ORM\Column(type="string", length=64)
+     * @ORM\Column(name="user_password",type="string", length=64)
      */
     protected $user_password;
     
     /**
-     * @ORM\Column(name="is_active", type="boolean")
+     * @ORM\Column(name="user_status", type="boolean")
      */
     protected $user_status;
     
     
     /**
-     * @ORM\ManyToMany(targetEntity="Role", inversedBy="role_users")
+     * @ORM\ManyToMany(targetEntity="\Taloc\UserBundle\Entity\Role", inversedBy="role_users")
+     * @ORM\JoinTable(name="user_roles",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="user_id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="role_id")}
+     *      )
      *
      */
     protected $user_roles;
@@ -62,7 +66,15 @@ class User implements AdvancedUserInterface, \Serializable {
         return $this->user_email;
     }
     
+    public function getUserEmail() {
+        return $this->user_email;
+    }
+    
     public function getPassword() {
+        return $this->user_password;
+    }
+    
+     public function getUserPassword() {
         return $this->user_password;
     }
     
@@ -99,7 +111,7 @@ class User implements AdvancedUserInterface, \Serializable {
 
     public function isEnabled()
     {
-        return $this->isActive;
+        return $this->user_status;
     }
     
     
@@ -113,7 +125,7 @@ class User implements AdvancedUserInterface, \Serializable {
         return serialize(array(
             $this->user_id,
             $this->user_email,
-            $this->user_facebook_email,
+            $this->user_facebook_code,
             $this->user_password,
             $this->user_status
 
@@ -132,13 +144,17 @@ class User implements AdvancedUserInterface, \Serializable {
         list (
             $this->user_id,
             $this->user_email,
-            $this->user_facebook_email,
+            $this->user_facebook_code,
             $this->user_password,
             $this->user_status
             /*
              * Add properties if exist
              */
         ) = unserialize($serialized);
+    }
+    
+    public function getId() {
+        return $this->user_id;
     }
     
     

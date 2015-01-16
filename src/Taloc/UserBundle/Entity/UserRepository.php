@@ -13,14 +13,19 @@ class UserRepository extends EntityRepository implements UserProviderInterface
 {
     public function loadUserByUsername($username)
     {
-        $q = $this
-            ->createQueryBuilder('u')
-            ->select('u,r')
-            ->leftJoin('u.user_roles', 'r')
-            ->where('u.user_email = :username OR u.user_facebook_code = :facebook_code')
-            ->setParameter('username', $username)
-            ->setParameter('facebook_code', $username)
-            ->getQuery();
+        
+        try {
+            
+            $q = $this->getEntityManager()->createQueryBuilder()
+                    ->select(array('u', 'r'))
+                    ->from('Taloc\UserBundle\Entity\User', 'u')
+                    ->leftJoin('u.user_roles', 'r')
+                    ->where('u.user_email = :username')
+                    ->setParameter('username', $username)->getQuery(); 
+            
+                //dd($q->getSingleResult());exit();
+                //dd($q);exit();
+        } catch ( \Exception $ex ) { echo $ex->getMessage();exit(); }
 
         try {
             // The Query::getSingleResult() method throws an exception
@@ -51,7 +56,7 @@ class UserRepository extends EntityRepository implements UserProviderInterface
 
         return $this->find($user->getId());
     }
-
+    
     public function supportsClass($class)
     {
         return $this->getEntityName() === $class

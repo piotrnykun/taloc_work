@@ -1,0 +1,37 @@
+{% extends 'TalocAppBundle:frontend:base_login.html.twig' %}
+
+{% block center %}
+    
+    <div class="loginOuterContainer">
+        <div class="loginInnerContainer">
+            <div class="loginContainer">
+
+                <img class="talocLogin" src="{{ asset('img/backend/taloc.png') }}">
+                <span class="talocLoginDesc">Taloc backoffice</span>
+                
+                {{ form_start(form, { 'attr': {'class': 'login_form', 'action': path('login_check') } }) }}
+                    
+                {{ form_widget(form.user_email, { 'attr': {'class': 'form-control input-form'} }) }}
+                 <div class="form_errors">
+                        {{ form_errors(form.user_email) }} 
+                </div>
+                {{ form_widget(form.user_password, { 'attr': {'class': 'form-control input-form'} }) }}
+                
+                <div class="form_errors">
+                        {{ form_errors(form.user_password) }} 
+                </div>
+                    
+                {{ form_widget(form.user_save_me, { 'attr': {'class': 'form-control checkbox_login'} }) }}
+                {{ form_label(form.user_save_me, 'Zapamiętaj mnie', { 'label_attr': {'class': 'save_me'} }) }}
+                {{ form_widget(form.log_me, { 'attr': {'class': 'btn btn-login'} }) }}
+                
+                {{ form_end(form) }}
+                
+                {% if error %}
+    ... {{ error.messageKey|trans(error.messageData, 'security') }} ...
+{% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

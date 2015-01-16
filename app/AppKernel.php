@@ -18,7 +18,6 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             /* external registration bundle: */
             new Taloc\UserBundle\TalocUserBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
             new Taloc\AppBundle\TalocAppBundle()
         );
                                 

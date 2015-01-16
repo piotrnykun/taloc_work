@@ -74,11 +74,6 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
     
-fos_user:
-    db_driver: orm
-    firewall_name: admin
-    user_class: Taloc\UserBundle\Entity\User
-    
 services:
     test_service:
         class:        Taloc\AppBundle\Services\Test
