@@ -28,7 +28,7 @@
                 {{ form_end(form) }}
                 
                 {% if error %}
-    ... {{ error.messageKey|trans(error.messageData, 'security') }} ...
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
 {% endif %}
 
             </div>

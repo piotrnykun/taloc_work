@@ -17,6 +17,12 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/backend/admin.css') }}">
         <script type="text/javascript" src="{{ asset('js/backend/main.js') }}"></script>
         
+        {#dataTablesJs: #}
+        
+        <link rel="stylesheet" type="text/css" href="{{ asset('lib/dataTables/css/dataTables.bootstrap.css') }}">
+        <script type="text/javascript" src="{{ asset('lib/dataTables/js/jquery.dataTables.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('lib/dataTables/js/dataTables.bootstrap.js') }}"></script>
+        
         {# fonts: #}
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
     </head>
@@ -41,6 +47,12 @@
                     
                     <div class="topRight">
                         
+                        <div class="userLayoutData">
+                            <img class="userAvatar" src="{{asset('img/backend/user_avatar.png')}}">
+                            <p>{{app.user.username}}</p>
+                        </div>
+                        
+                        
                         <div class="userSettings">
                             <img data-inactive="{{ asset('img/backend/config_gray.png') }}" data-active="{{ asset('img/backend/config.png') }}" src="{{ asset('img/backend/config_gray.png') }}">
                         </div>
@@ -62,7 +74,7 @@
                                 <li><a href="#"><img data-inactive="{{ asset('img/backend/dashboard_white.png') }}" data-active="{{ asset('img/backend/dashboard.png') }}" src="{{ asset('img/backend/dashboard_white.png') }}" ><span>Dashboard</span></a></li>
                                 <li><a href="#"><img data-inactive="{{ asset('img/backend/product_list_white.png') }}" data-active="{{ asset('img/backend/product_list_blue.png') }}" src="{{ asset('img/backend/product_list_white.png') }}" ><span>Lista produktów</span></a></li>
                                 <li><a href="#"><img data-inactive="{{ asset('img/backend/reclamation_white.png') }}" data-active="{{ asset('img/backend/reclamation_blue.png') }}" src="{{ asset('img/backend/reclamation_white.png') }}" ><span>Lista reklamacji</span></a></li>
-                                <li><a href="#"><img data-inactive="{{ asset('img/backend/clients_list_white.png') }}" data-active="{{ asset('img/backend/clients_list_blue.png') }}" src="{{ asset('img/backend/clients_list_white.png') }}" ><span>Lista klientów</span></a></li>
+                                <li><a href="{{ path('users_list') }}"><img data-inactive="{{ asset('img/backend/clients_list_white.png') }}" data-active="{{ asset('img/backend/clients_list_blue.png') }}" src="{{ asset('img/backend/clients_list_white.png') }}" ><span>Lista klientów</span></a></li>
                                 <li><a href="#"><img data-inactive="{{ asset('img/backend/order_white.png') }}" data-active="{{ asset('img/backend/order_blue.png') }}" src="{{ asset('img/backend/order_white.png') }}" ><span>Lista zamówień</span></a></li>
                                 <li><a href="#"><img data-inactive="{{ asset('img/backend/time_white.png') }}" data-active="{{ asset('img/backend/time_blue.png') }}" src="{{ asset('img/backend/time_white.png') }}" ><span>Lista ofert ograniczonych czasowo</span></a></li>
                             </ul>

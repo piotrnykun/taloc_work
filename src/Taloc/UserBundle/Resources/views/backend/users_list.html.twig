@@ -1,0 +1,57 @@
+{% extends 'TalocAppBundle:backend:base.html.twig' %}
+
+{% block center %}
+    
+    <div class="bigCenterContainer userListContainer">
+        
+        <div class="bigHeaderContainer">
+            
+            <a href="">
+                <img src="{{asset('img/backend/refresh.png')}}" >
+            </a>
+            
+            <h1>Lista klientów</h1>
+            
+        </div>
+            
+        <div class="bigContentContainer">
+            
+            <table id="userList" class="table table-condensed table-responsive" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Email ( login )</th>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>Firma</th>
+                        <th>Logowanie</th>
+                        <th>Typ konta</th>
+                        <th>Status konta</th>
+                        <th>Płeć</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+            
+        <div class="bigContentFooter">
+                
+            <div class="bFLeftContainer">
+
+            </div>
+
+            <div class="bFRighttContainer">
+
+            </div>
+                
+        </div>
+        
+    </div>
+    
+    <input type="hidden" id="ajaxPath" value="http://debian{{path('users_list_ajax')}}">
+    {% javascripts '@TalocUserBundle/Resources/public/js/users_list.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    
+    
+    
+{% endblock %}

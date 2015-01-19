@@ -1,8 +1,11 @@
 security:
     encoders:
-        Taloc\UserBundle\Entity\User: plaintext
-            #algorithm: bcrypt
-            #cost: 12
+        Taloc\UserBundle\Entity\User: 
+            algorithm: bcrypt
+            cost: 12
+        Taloc\UserBundle\Entity\Admin: 
+            algorithm: bcrypt
+            cost: 12
 
 #    role_hierarchy:
 #        ROLE_ADMIN:       ROLE_USER
@@ -11,6 +14,8 @@ security:
     providers: 
         front_provider:
             entity: { class: \Taloc\UserBundle\Entity\User }
+        backend_provider:
+            entity: { class: \Taloc\UserBundle\Entity\Admin }
 
     firewalls:
         dev:
@@ -36,6 +41,19 @@ security:
             pattern:  ^/admin
             anonymous: ~
             context: admin
+            form_login:
+                provider: backend_provider
+                login_path: /admin/login
+                check_path: /admin/login_check
+                username_parameter: form[admin_login]
+                password_parameter: form[admin_password]
+                default_target_path:  /admin
+            logout:
+                path:   /admin/logout
+                target: /admin/login
+                success_handler: admin_logout_listener
+                invalidate_session: false
+                
         default:
             anonymous: ~    
             

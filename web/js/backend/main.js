@@ -38,6 +38,13 @@ Admin.leftMenuHover = function() {
   
   $('.leftMenuButton').click(function() {
         $('.leftContainer').toggle();
+        
+        if ($('.leftContainer').is(':visible')) {
+            var width = $(window).width() - $('.leftContainer').width()-20;
+            $('.centerContainer').width(width+'px');
+        } else {
+            $('.centerContainer').width('100%');
+        }
   });
   
   

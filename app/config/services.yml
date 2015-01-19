@@ -7,3 +7,9 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+    admin_logout_listener: 
+        class: Taloc\AppBundle\Security\Listeners\LogoutListener
+        
+    admin_login_login_handler:
+        class: Taloc\AppBundle\Security\Listeners\LoginListener

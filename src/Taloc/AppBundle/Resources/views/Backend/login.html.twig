@@ -1,0 +1,50 @@
+{% extends 'TalocAppBundle:backend:base_login.html.twig' %}
+
+{% block center %}
+    
+    <div class="loginOuterContainer">
+        <div class="loginInnerContainer">
+            <div class="loginContainer">
+
+                <img class="talocLogin" src="{{ asset('img/backend/taloc.png') }}">
+                <span class="talocLoginDesc">Taloc backoffice</span>
+                
+                {{ form_start(form, { 'attr': {'class': 'login_form', 'action': path('admin_login_check') } }) }}
+                    
+                    {{ form_widget(form.admin_login, { 'attr': {'maxLength': 30, 'class': 'form-control input-form login-input'} }) }}
+                    <img class="login-addon-login" src="{{ asset('img/backend/login_user.png') }}">
+                    
+                 <div class="form_errors">
+                        {{ form_errors(form.admin_login) }} 
+                </div>
+                
+                {{ form_widget(form.admin_password, { 'attr': {'maxLength': 30,'class': 'form-control input-form login-input'} }) }}
+                <img class="login-addon-pass" src="{{ asset('img/backend/pass.png') }}">
+                
+                <div class="form_errors">
+                        {{ form_errors(form.admin_password) }} 
+                </div>
+                    
+                
+                {% if error %}
+                    <div class="alert alert-danger admin-login-alert" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span class="sr-only">Error:</span>
+                            {{ error.messageKey|trans(error.messageData, 'security') }} 
+                    </div>
+                {% endif %}
+                
+                {% for flashMessage in app.session.flashbag.get('success_msg') %}
+                    <div class="alert alert-success admin-login-alert-default" role="alert">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
+                
+                {{ form_widget(form.log_me, { 'attr': {'class': 'btn btn-login'} }) }}
+                
+                {{ form_end(form) }}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

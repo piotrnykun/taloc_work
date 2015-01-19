@@ -15,6 +15,8 @@
 
 .adminContainer {
     padding:0;
+    height:100%;
+    overflow:hidden;
 }
 @media (min-width: 768px) {
   .adminContainer {
@@ -34,6 +36,8 @@
 
 html,body {
     font-family: 'Open Sans', sans-serif;
+    height:100%;
+    background:#e4eaec;
 }
 
 .admin_login_layout {
@@ -45,12 +49,15 @@ html,body {
     width:200px;
     float:left;
     display:none;
+    height:100%;
+    margin-right:15px;
 }
 
 .leftContainer .leftMenu {
     background:#4b565c;
     border:none;
     border-radius:0;
+    height:100%;
 }
 
 .leftContainer .leftMenu .navbar-collapse {
@@ -86,6 +93,7 @@ html,body {
     width:100%;
     float:left;
     height:50px;
+    background:#FFFFFF;
 }
 
 .topContainer .leftTaloc {
@@ -125,7 +133,7 @@ html,body {
     float:right;
     height:50px;
     line-height:50px;
-    width:100px;
+    width:auto;
     background:#FFFFFF;
 }
 
@@ -212,6 +220,7 @@ html,body {
 
 .login_form {
     margin-top:52px;
+    position:relative;
 }
 
 #form_admin_save_me {
@@ -243,8 +252,116 @@ html,body {
     margin-top: -16px;
 }
 
-
 .form_errors ul {
     list-style: none;
 }
 
+.admin-login-alert-default {
+    position: absolute;
+    width: 100%;
+}
+
+.admin-login-alert {    
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+    font-size: 12px;
+    position: absolute;
+    width: 100%;
+}
+
+.login-addon-login {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+}
+
+.login-addon-pass {
+    position: absolute;
+    right: 12px;
+    top: 63px;
+}
+
+.userLayoutData {
+    background:#14283c;
+    height:50px;
+    line-height:50px;
+    padding:0 17px;
+    text-align:center;
+    float:left;
+    cursor:pointer;
+    position:relative;
+}
+
+.userLayoutData p {
+    height:50px;
+    line-height:50px;
+    display:block;
+    color:#FFFFFF;
+    font-size:14px;
+    font-weight:600;
+    text-align:center;
+}
+
+.userAvatar {
+    left: -24px;
+    position: absolute;
+    top: 9px;
+}
+
+.centerContainer {
+    float: left;
+    position: relative;
+    width: 100%;
+}
+
+/* user list: */
+
+.bigCenterContainer {
+    width:100%;
+    height:auto;
+    padding:15px;
+    border-radius:10px;
+}
+
+.bigHeaderContainer {
+    background: none repeat scroll 0 0 #e4eaec;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin-bottom:10px;
+    width: 100%;
+}
+
+.bigHeaderContainer img {
+    display: block;
+    float: left;
+    margin-top: 7px;
+    margin-right:17px;
+}
+
+.bigHeaderContainer h1 {
+    color: #14283c;
+    display: block;
+    float: left;
+    font-size: 22px;
+    font-weight: 300;
+    height: 50px;
+    line-height: 50px;
+    margin: 0;
+}
+
+.bigContentContainer {
+    width:100%;
+    background:#FFFFFF;
+    border-radius:10px 10px 0 0;
+    padding:15px;
+}
+
+.bigContentFooter {
+    background:#32b4ff;
+    height:35px;
+    line-height:35px;
+    width:100%;
+    border-radius:0 0 10px 10px;
+}

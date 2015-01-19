@@ -89,5 +89,13 @@ class FrontendController extends Controller
         
     }
     
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logoutAction()
+    {
+        
+    }
+    
     
 }

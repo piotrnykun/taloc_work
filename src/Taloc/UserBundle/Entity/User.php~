@@ -1,0 +1,295 @@
+<?php
+
+namespace Taloc\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="tc_user")
+ * @ORM\Entity(repositoryClass="Taloc\UserBundle\Entity\UserRepository")
+ * 
+ */
+class User implements AdvancedUserInterface, \Serializable {
+    
+    /**
+     * @ORM\Column(name="user_id", type="integer" )
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $user_id;
+    
+    /**
+     * @ORM\Column(name="user_email", type="string",length=100, unique=true)
+     * 
+     */
+    protected $user_email;
+    
+    /**
+     * @ORM\Column(name="user_facebook_code", type="string",length=200, unique=true)
+     * 
+     */
+    protected $user_facebook_code;
+    
+    /**
+     * @ORM\Column(name="user_password",type="string", length=64)
+     */
+    protected $user_password;
+    
+    /**
+     * @ORM\Column(name="user_status", type="boolean")
+     */
+    protected $user_status;
+    
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="\Taloc\UserBundle\Entity\Role", inversedBy="role_users")
+     * @ORM\JoinTable(name="user_roles",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="user_id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="role_id")}
+     *      )
+     *
+     */
+    protected $user_roles;
+    
+    /**
+     * @ORM\Column(name="user_sex", type="string", length=1 )
+     */
+    protected $user_sex;
+    
+    /**
+     * @ORM\Column(name="user_by_email_activate", type="boolean" )
+     */
+    protected $user_by_email_activate = 0;
+    
+    /**
+     * @ORM\Column(name="user_type", type="string" )
+     */
+    protected $user_type = "standard";
+    
+    /**
+     * @ORM\Column(name="user_is_company", type="boolean"  )
+     */
+    protected $user_is_company = 0;
+    
+    /**
+     * @ORM\Column(name="user_first_name", type="string", length=255  )
+     */
+    protected $user_first_name;
+    
+    /**
+     * @ORM\Column(name="user_last_name", type="string", length=255  )
+     */
+    protected $user_last_name;
+    
+    /**
+     * @ORM\Column(name="user_street", type="string", length=100  )
+     */
+    protected $user_street;
+    
+    /**
+     * @ORM\Column(name="user_building_nr", type="string", length=45  )
+     */
+    protected $user_building_nr;
+    
+    /**
+     * @ORM\Column(name="user_house_nr", type="string", length=45  )
+     */
+    protected $user_house_nr;
+    
+    /**
+     * @ORM\Column(name="user_post_code", type="string", length=45  )
+     */
+    protected $user_post_code;
+    
+    /**
+     * @ORM\Column(name="user_city", type="string", length=100  )
+     */
+    protected $user_city;
+    
+    /**
+     * @ORM\Column(name="user_phone", type="string", length=100  )
+     */
+    protected $user_phone;
+    
+    /**
+     * @ORM\Column(name="user_nip", type="string", length=45  )
+     */
+    protected $user_nip;
+    
+    /**
+     * @ORM\Column(name="user_facture_first_name", type="string", length=255  )
+     */
+    protected $user_facture_first_name;
+    
+    /**
+     * @ORM\Column(name="user_facture_last_name", type="string", length=255  )
+     */
+    protected $user_facture_last_name;
+    
+    /**
+     * @ORM\Column(name="user_facture_is_company", type="boolean"  )
+     */
+    protected $user_facture_is_company = 0;
+    
+    /**
+     * @ORM\Column(name="user_facture_street", type="string", length=100  )
+     */
+    protected $user_facture_street;
+    
+    /**
+     * @ORM\Column(name="user_facture_building_nr", type="string", length=45  )
+     */
+    protected $user_facture_building_nr;
+    
+    /**
+     * @ORM\Column(name="user_facture_house_nr", type="string", length=45  )
+     */
+    protected $user_facture_house_nr;
+    
+    /**
+     * @ORM\Column(name="user_facture_post_code", type="string", length=45  )
+     */
+    protected $user_facture_post_code;
+    
+    /**
+     * @ORM\Column(name="user_facture_city", type="string", length=100  )
+     */
+    protected $user_facture_city;
+    
+    /**
+     * @ORM\Column(name="user_facture_phone", type="string", length=100  )
+     */
+    protected $user_facture_phone;
+    
+    /**
+     * @ORM\Column(name="user_facture_nip", type="string", length=100  )
+     */
+    protected $user_facture_nip;
+    
+    /**
+     * @ORM\Column(name="user_accept_regulations", type="boolean"  )
+     */
+    protected $user_accept_regulations = 1;
+    
+    /**
+     * @ORM\Column(name="user_accept_newsletter", type="boolean" )
+     */
+    protected $user_accept_newsletter = 0;
+    
+    /**
+     * @ORM\Column(name="user_date_add", type="datetime" )
+     */
+    protected $user_date_add;
+            
+    /**
+     * @ORM\Column(name="user_object_type", type="string"  )
+     */
+    protected $user_object_type = "user";
+
+    public function __construct() {
+        $this->user_roles = new ArrayCollection();
+    }
+    
+    /* UserInterface methods: */
+
+    public function getUsername() {
+        return $this->user_email;
+    }
+    
+    public function getUserEmail() {
+        return $this->user_email;
+    }
+    
+    public function getPassword() {
+        return $this->user_password;
+    }
+    
+     public function getUserPassword() {
+        return $this->user_password;
+    }
+    
+    public function getSalt() {
+        return null;
+    }
+    
+    public function eraseCredentials() {
+        
+    }
+    
+    /* ROLES METHOD: */
+    
+    public function getRoles()
+    {
+        return $this->user_roles->toArray();
+    }
+    
+    
+    /* AdvancedUserInterface method: */
+    
+    public function isAccountNonExpired() {
+        return true;
+    }
+    
+    public function isAccountNonLocked() {
+        return true;
+    }
+    
+    public function isCredentialsNonExpired()
+    {
+        return true;
+    }
+
+    public function isEnabled()
+    {
+        return $this->user_status;
+    }
+    
+    
+    /* Serializable methods: */
+    
+    /**
+     * @see \Serializable::serialize()
+     */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->user_id,
+            $this->user_email,
+            $this->user_facebook_code,
+            $this->user_password,
+            $this->user_status
+
+            /*
+             * Add properties if exist
+             */
+             
+        ));
+    }
+
+    /**
+     * @see \Serializable::unserialize()
+     */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->user_id,
+            $this->user_email,
+            $this->user_facebook_code,
+            $this->user_password,
+            $this->user_status
+            /*
+             * Add properties if exist
+             */
+        ) = unserialize($serialized);
+    }
+    
+    public function getId() {
+        return $this->user_id;
+    }
+    
+    
+}
