@@ -1,0 +1,18 @@
+@media only screen and (max-width: 1200px) {
+  /* line 33, ../sass/backend_mobile.scss */
+  .centerMenuOpen {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 991px) {
+  /* line 33, ../sass/backend_mobile.scss */
+  .centerMenuOpen {
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  /* line 33, ../sass/backend_mobile.scss */
+  .centerMenuOpen {
+    width: 60%;
+  }
+}

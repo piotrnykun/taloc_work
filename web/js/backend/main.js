@@ -40,10 +40,12 @@ Admin.leftMenuHover = function() {
         $('.leftContainer').toggle();
         
         if ($('.leftContainer').is(':visible')) {
-            var width = $(window).width() - $('.leftContainer').width()-20;
-            $('.centerContainer').width(width+'px');
+           // var width = $(window).width() - $('.leftContainer').width()-20;
+            //$('.centerContainer').width(width+'px');
+            $('.centerContainer').addClass('centerMenuOpen');
         } else {
             $('.centerContainer').width('100%');
+            $('.centerContainer').removeClass('centerMenuOpen');
         }
   });
   

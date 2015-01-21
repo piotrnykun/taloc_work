@@ -1,0 +1,30 @@
+@mixin mq($media) {
+    
+    @if $media == bigipad {
+        @media only screen and (max-width: 1200px) {
+            @content;
+        }
+    }
+    
+    @if $media == ipad {
+        @media only screen and (max-width: 991px) {
+            @content;
+        }
+    }
+    @else if $media == lanscapeSmartphone {
+        @media only screen and (max-width: 768px) { 
+            @content;    
+        }
+    }
+    @else if $media == portretSmartphone {
+        @media only screen and (max-width: 480px) {
+            @content;
+        }
+    }
+    @else if $media == oldMobile {
+        @media only screen and (max-width: 320px) {
+            @content;
+        }
+    }
+
+} 

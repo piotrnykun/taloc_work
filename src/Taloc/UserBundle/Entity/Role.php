@@ -35,6 +35,15 @@ class Role implements RoleInterface
      * 
      */
     private $role_users;
+    
+    /**
+     * 
+     * @ORM\ManyToMany(targetEntity="\Taloc\UserBundle\Entity\Admin", mappedBy="admin_roles")
+     * 
+     */
+    private $role_admins;
+    
+    
 
     public function __construct()
     {

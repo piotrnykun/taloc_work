@@ -365,3 +365,16 @@ html,body {
     width:100%;
     border-radius:0 0 10px 10px;
 }
+
+.centerMenuOpen {
+    width:80%;
+}
+
+.edit, .edit:focus, .edit:hover {
+    text-decoration:none;
+    color:#000000;
+}
+
+.edit:hover {
+    color:#32b4ff;
+}
